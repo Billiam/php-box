@@ -66,7 +66,7 @@ Vagrant.configure("2") do |config|
   # #               Managed by Puppet.\n"
   # # }
   #
-  config.vm.provision :puppet do |puppet|
+  config.vm.provision :puppet, :options => ["--pluginsync --color=false"] do |puppet|
    puppet.manifests_path = "manifests"
    puppet.module_path = "modules"
    puppet.manifest_file  = "squeeze.pp"
