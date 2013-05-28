@@ -2,7 +2,7 @@ class adminer {
     define get_plugin($url, $name) {
         exec{"get_${name}":
             command => "wget ${url} -O /var/www/adminer/plugins/${name}.php",
-            creates => '/var/www/adminer/plugins/${name}.php',
+            creates => "/var/www/adminer/plugins/${name}.php",
             require => File['/var/www/adminer/plugins']
         }
     }
@@ -16,7 +16,7 @@ class adminer {
     }
     exec{"download_adminer":
         command => "wget http://www.adminer.org/latest-en.php -O /var/www/adminer/latest.php",
-        creates => '/var/www/adminer/adminer.php',
+        creates => '/var/www/adminer/latest.php',
         require => File['/var/www/adminer']
     }
     exec{"download_skin":
