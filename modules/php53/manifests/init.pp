@@ -25,17 +25,29 @@ class php53 {
     php::module { 'curl': }
     php::module { "imagick": }
 
-        # PEAR
-    include pear
 
-    pear::package { 'PEAR':
-        version => latest,
-        require => Class['php']
+    # upgrade pear
+    exec {"pear upgrade":
+      command => "/usr/bin/pear upgrade",
+      require => Class['php'],
+      returns => [ 0, '', ' ']
     }
 
-    pear::package { 'phing':
-      version => latest,
-      repository => 'pear.phing.info',
-      require => Pear::Package['PEAR']
+    # set channels to auto discover
+    exec { "pear auto_discover" :
+      command => "/usr/bin/pear config-set auto_discover 1",
+      require => [Class['php']]
+    }
+
+    exec { "pear update-channels" :
+      command => "/usr/bin/pear update-channels",
+      require => [Class['php']]
+    }
+    
+    exec {"pear install phing":
+      command => "/usr/bin/pear install --alldeps pear.phing.info/phing",
+      creates => '/usr/bin/phing',
+      require => Exec['pear update-channels'],
+      returns => [ 0, '', ' ']
     }
 }
