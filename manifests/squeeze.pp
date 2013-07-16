@@ -34,7 +34,16 @@ class squeeze {
 
   apache::listen { '192.168.56.21:80': }
 
+  include composer
 
+  editfile::config { "enable_adminer":
+    path   => '/etc/php5/cli/conf.d/suhosin.ini',
+    entry  => 'suhosin.executor.include.whitelist',
+    ensure => 'phar',
+    quote  => false,
+    require => [Class['composer']]
+  }
+  
   include mysql
   include postgres
   include adminer::apache
