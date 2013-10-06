@@ -7,8 +7,18 @@ class adminer {
         }
     }
 
-    file { ['/var/www', '/var/www/adminer']:
+    file { '/var/www':
         ensure => directory
+    }
+    file { '/var/www/adminer':
+        ensure => directory
+    }
+    exec { "/bin/chown root:www-data /var/www":
+      unless => "/bin/sh -c '[ $(/usr/bin/stat -c %G /var/www) == www-data ]'",
+      require => [File['/var/www']]
+    }
+    exec { "/bin/chmod 755 /var/www":
+      unless => "/bin/sh -c '[ $(/usr/bin/stat -c %a /var/www) == 755 ]'",
     }
     file { '/var/www/adminer/plugins':
         ensure => directory,

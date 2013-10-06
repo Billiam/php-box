@@ -8,7 +8,7 @@ class php53 {
     }
 
     class { 'php':
-        package => ['php5-cli', 'php5-common'],
+        package => ['php5', 'php5-cli', 'php5-common', 'libapache2-mod-php5'],
         version => 'latest',
         #      augeas => true,
         config_file => '/etc/php5/conf.d/php-puppet.ini',
@@ -26,28 +26,10 @@ class php53 {
     php::module { "imagick": }
 
 
-    # upgrade pear
-    exec {"pear upgrade":
-      command => "/usr/bin/pear upgrade",
-      require => Class['php'],
-      returns => [ 0, '', ' ']
-    }
-
-    # set channels to auto discover
-    exec { "pear auto_discover" :
-      command => "/usr/bin/pear config-set auto_discover 1",
-      require => [Class['php']]
-    }
-
-    exec { "pear update-channels" :
-      command => "/usr/bin/pear update-channels",
-      require => [Class['php']]
-    }
-    
-    exec {"pear install phing":
-      command => "/usr/bin/pear install --alldeps pear.phing.info/phing",
-      creates => '/usr/bin/phing',
-      require => Exec['pear update-channels'],
-      returns => [ 0, '', ' ']
+    # install phing
+    php::pear::module { 'phing':
+      repository => 'pear.phing.info',
+      alldeps => 'true',
+      use_package => false
     }
 }
