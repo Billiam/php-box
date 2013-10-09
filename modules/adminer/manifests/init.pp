@@ -11,7 +11,8 @@ class adminer {
         ensure => directory
     }
     file { '/var/www/adminer':
-        ensure => directory
+        ensure => directory,
+        require => File['/var/www']
     }
     exec { "/bin/chown root:www-data /var/www":
       unless => "/bin/sh -c '[ $(/usr/bin/stat -c %G /var/www) == www-data ]'",

@@ -8,7 +8,7 @@ class php53 {
     }
 
     class { 'php':
-        package => ['php5', 'php5-cli', 'php5-common', 'libapache2-mod-php5'],
+        package => ['php5', 'php5-cli', 'php5-common'],
         version => 'latest',
         #      augeas => true,
         config_file => '/etc/php5/conf.d/php-puppet.ini',

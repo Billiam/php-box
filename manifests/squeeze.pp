@@ -15,9 +15,13 @@ class squeeze {
 
   include php53
   
-  class { 'apache':
-    default_vhost => false,
-  }
+    class { 'apache':
+      default_vhost => false,
+      mpm_module => 'prefork'
+    }
+
+   class {'apache::mod::php': }
+
 
   exec {"vagrant www-data membership":
     unless => 'groups vagrant | grep -q "\bwww-data\b"',
@@ -26,6 +30,7 @@ class squeeze {
   }
 
   apache::listen { '192.168.56.21:80': }
+
 
   include composer
 
