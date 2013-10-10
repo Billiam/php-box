@@ -6,31 +6,18 @@ class squeeze {
     ensure => present
   }
 
-  exec { 'apt-get update':
-    command => 'sudo /usr/bin/apt-get update'
-  }
-
   include git
   include subversion
 
   include php53
-  
-    class { 'apache':
-      default_vhost => false,
-      mpm_module => 'prefork'
-    }
 
-   class {'apache::mod::php': }
-
+  import 'apache.pp'  
 
   exec {"vagrant www-data membership":
     unless => 'groups vagrant | grep -q "\bwww-data\b"',
     command => "usermod -aG www-data vagrant",
     require => [Class['apache']]
   }
-
-  apache::listen { '192.168.56.21:80': }
-
 
   include composer
 

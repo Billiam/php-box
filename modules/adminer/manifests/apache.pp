@@ -1,9 +1,9 @@
 class adminer::apache inherits adminer {
     apache::vhost { 'default':
-        options         => ['-Indexes','FollowSymLinks','-MultiViews'],
-        port            => 80,
-        add_listen      => false,
-        docroot         => '/var/www/adminer',
-        require         => [File['/var/www/adminer/index.php']],
+        docroot             => '/var/www/adminer',
+        directory           => '/var/www/adminer',
+        server_name         => false,
+        priority            => '',
+        directory_options   => '-Indexes FollowSymLinks -MultiViews'
     }
 }

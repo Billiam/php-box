@@ -2,7 +2,7 @@
 
 https://github.com/Billiam/vagrant-baseboxes
 
-Debian Squeeze 607-based box
+Debian Squeeze 6.0.7x64-based box
 
  * mysql
  * postgres

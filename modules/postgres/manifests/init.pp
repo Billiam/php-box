@@ -4,12 +4,12 @@ class postgres {
 
   package { 'postgresql-8.4':
     ensure => present,
-    require => Exec['apt-get update']
+    require => Exec['apt_update']
   }
 
   package { 'libpq-dev':
     ensure => present,
-    require => Exec['apt-get update']
+    require => Exec['apt_update']
   }
 
   service { 'postgresql':

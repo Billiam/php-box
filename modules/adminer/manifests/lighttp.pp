@@ -10,11 +10,11 @@ class adminer::lighttp inherits adminer {
 
     package { "php5-pgsql":
         ensure  => present,
-        require => [Package['php5-common'], Exec['apt-get update']]
+        require => [Package['php5-common'], Exec['apt_update']]
     }
 
     package { "php5-mysql":
         ensure  => present,
-        require => [Package['php5-common'], Exec['apt-get update']]
+        require => [Package['php5-common'], Exec['apt_update']]
     }
 }

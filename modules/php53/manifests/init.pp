@@ -24,7 +24,7 @@ class php53 {
     php::module { 'gd': }
     php::module { 'curl': }
     php::module { "imagick": }
-
+    php::module { "mcrypt": }
 
     # install phing
     php::pear::module { 'phing':
