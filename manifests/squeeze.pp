@@ -11,7 +11,7 @@ class squeeze {
 
   include php53
 
-  import 'apache.pp'  
+  import 'apache.pp'
 
   exec {"vagrant www-data membership":
     unless => 'groups vagrant | grep -q "\bwww-data\b"',
@@ -20,6 +20,11 @@ class squeeze {
   }
 
   include composer
+  class { "xdebug":
+    require => [Class['php53']] 
+  }
+  
+  package {"ack-grep": }
 
   editfile::config { "enable_adminer":
     path   => '/etc/php5/cli/conf.d/suhosin.ini',
@@ -28,7 +33,7 @@ class squeeze {
     quote  => false,
     require => [Class['composer']]
   }
-  
+
   include mysql
   include postgres
   include adminer::apache

@@ -10,9 +10,16 @@ class php53 {
     class { 'php':
         package => ['php5', 'php5-cli', 'php5-common'],
         version => 'latest',
-        #      augeas => true,
-        config_file => '/etc/php5/conf.d/php-puppet.ini',
         require => [Apt::Source['dotdeb']]
+    }
+
+    editfile::config { "enable-html-errors":
+      path   => '/etc/php5/apache2/php.ini',
+      entry  => 'html_errors',
+      ensure => 'On',
+      quote  => false,
+      require => [Class['php']],
+      notify => [Service['apache2']]
     }
 
     php::module { 'dev': }
