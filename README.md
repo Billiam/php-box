@@ -9,4 +9,5 @@ Debian Squeeze 6.0.7x64-based box
  * apache
  * phing
  * xdebug
+ * webgrind
  * adminer
