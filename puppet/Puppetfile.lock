@@ -1,0 +1,82 @@
+FORGE
+  remote: https://forgeapi.puppetlabs.com
+  specs:
+    emyl/vagrant (0.1.0)
+    example42/apache (2.1.7)
+      example42/puppi (>= 2.0.0)
+    example42/php (2.0.18)
+      example42/puppi (>= 2.0.0)
+    example42/puppi (2.1.9)
+    maestrodev/wget (1.4.4)
+    puppetlabs/apt (1.5.0)
+      puppetlabs/stdlib (>= 2.2.1)
+    puppetlabs/stdlib (4.2.2)
+    willdurand/composer (0.0.7)
+      maestrodev/wget (>= 1.2.0)
+
+GIT
+  remote: https://github.com/duritong/puppet-tmux
+  ref: master
+  sha: 9b1a4e4b968bb1b5a4f0b7043a9c2802277056ff
+  specs:
+    duritong/tmux (0.0.1)
+
+GIT
+  remote: https://github.com/mstrauss/puppet-editfile
+  ref: master
+  sha: 884efdc0997af667f24625e696630e6b1db5a952
+  specs:
+    mstrauss/editfile (0.0.1)
+
+PATH
+  remote: private/adminer
+  specs:
+    billiam/adminer (0.0.1)
+
+PATH
+  remote: private/git
+  specs:
+    billiam/git (0.0.1)
+
+PATH
+  remote: private/mysql
+  specs:
+    billiam/mysql (0.0.1)
+
+PATH
+  remote: private/php5
+  specs:
+    billiam/php5 (0.0.1)
+      example42/php (>= 0)
+      puppetlabs/apt (>= 0)
+
+PATH
+  remote: private/postgres
+  specs:
+    billiam/postgres (0.0.1)
+
+PATH
+  remote: private/site
+  specs:
+    billiam/site (0.0.1)
+      duritong/tmux (>= 0)
+      emyl/vagrant (>= 0)
+      puppetlabs/stdlib (>= 0)
+
+PATH
+  remote: private/xdebug
+  specs:
+    billiam/xdebug (0.0.1)
+
+DEPENDENCIES
+  billiam/adminer (>= 0)
+  billiam/git (>= 0)
+  billiam/mysql (>= 0)
+  billiam/php5 (>= 0)
+  billiam/postgres (>= 0)
+  billiam/site (>= 0)
+  billiam/xdebug (>= 0)
+  example42/apache (>= 0)
+  mstrauss/editfile (>= 0)
+  willdurand/composer (>= 0)
+
