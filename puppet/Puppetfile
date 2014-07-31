@@ -2,6 +2,8 @@ forge 'https://forgeapi.puppetlabs.com'
 
 mod 'example42-apache'
 mod 'willdurand-composer'
+mod 'willdurand-nodejs'
+
 
 mod 'mstrauss-editfile',    git: 'https://github.com/mstrauss/puppet-editfile'
 
@@ -12,3 +14,4 @@ mod 'billiam-php5',       path: 'private/php5'
 mod 'billiam-postgres',   path: 'private/postgres'
 mod 'billiam-site',       path: 'private/site'
 mod 'billiam-xdebug',     path: 'private/xdebug'
+

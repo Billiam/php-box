@@ -21,6 +21,10 @@ node 'php.dev' {
   include mysql
   include postgres
 
+  class { 'nodejs':
+    version      => 'stable',
+    make_install => false,
+  }
   class { 'apache':
     puppi => true,
   }
