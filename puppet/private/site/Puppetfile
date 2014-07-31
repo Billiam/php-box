@@ -1,5 +1,4 @@
 forge 'https://forgeapi.puppetlabs.com'
 
-mod 'duritong/tmux', git: 'https://github.com/duritong/puppet-tmux'
-mod 'emyl/vagrant'
-mod 'puppetlabs/stdlib'
+mod 'duritong-tmux', git: 'https://github.com/duritong/puppet-tmux'
+mod 'puppetlabs-stdlib'
