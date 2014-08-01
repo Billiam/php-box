@@ -12,6 +12,9 @@ FORGE
     puppetlabs-stdlib (4.3.2)
     willdurand-composer (0.0.7)
       maestrodev-wget (>= 1.2.0)
+    willdurand-nodejs (1.6.5)
+      maestrodev-wget (>= 1.2.0)
+      puppetlabs-stdlib (>= 3.2.1)
 
 GIT
   remote: https://github.com/duritong/puppet-tmux
@@ -77,4 +80,5 @@ DEPENDENCIES
   example42-apache (>= 0)
   mstrauss-editfile (>= 0)
   willdurand-composer (>= 0)
+  willdurand-nodejs (>= 0)
 

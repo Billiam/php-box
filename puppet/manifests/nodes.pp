@@ -6,7 +6,7 @@ node 'php.dev' {
   exec {"vagrant www-data membership":
     unless => 'groups vagrant | grep -q "\bwww-data\b"',
     command => "usermod -aG www-data vagrant",
-    require => [Class['apache']]
+    require => [Class['site::apache']]
   }
 
   class { 'apt':
@@ -18,16 +18,10 @@ node 'php.dev' {
   include composer
   include site::tmux
   include site::bash
+  include site::apache
+  include site::nodejs
   include mysql
   include postgres
-
-  class { 'nodejs':
-    version      => 'stable',
-    make_install => false,
-  }
-  class { 'apache':
-    puppi => true,
-  }
 
   include adminer::apache
 
